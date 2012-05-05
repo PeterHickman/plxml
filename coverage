@@ -1,0 +1,16 @@
+#!/bin/sh
+
+WHERE=/usr/local/share/lua/5.1/
+
+# Generate coverage stats
+lua $WHERE/coverage.lua plxml.lua tests/*
+
+# Report coverage stats
+lua $WHERE/report_coverage.lua plxml.lua > report.txt
+
+rm coverage.out
+
+tail -n 5 report.txt
+
+echo
+echo Full report in report.txt
